@@ -7,12 +7,16 @@
 class CCamera
 {
 public:
+	CCamera();
+	~CCamera();
 	HRESULT Init(void);
 	void Uninit(void);
 	void Update(void);
 	void Draw(void);
 
 	void SetCamera(void);
+
+	void SetCamera(D3DXVECTOR3 pos);
 
 private:
 	D3DMATRIX m_mtxView;		//ビューマトリックス

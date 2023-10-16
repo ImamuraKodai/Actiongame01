@@ -12,10 +12,13 @@
 #include"player.h"
 #include"input.h"
 #include"block.h"
+#include"camera.h"
 
 //静的メンバ変数
 CRenderer * CManager::m_pRenderer = NULL;
 CInputKeyboard * CManager::m_pKeyboard = NULL;
+CManager * pManager = NULL;
+//CCamera * CManager::m_pCamera = NULL;
 
 //コンストラクタ
 CManager::CManager()
@@ -55,6 +58,15 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 		//キーボードの初期化処理
 		m_pKeyboard->Init(hInstance, hWnd);
 	}
+
+	//if (m_pCamera == NULL)
+	//{
+	//	//カメラの生成
+	//	m_pCamera = new CCamera;
+
+	//	//カメラの初期化処理
+	//	m_pCamera->Init();
+	//}
 
 	//オブジェクトの生成
 	CObject2D::Create(D3DXVECTOR3(1000.0f, 500.0f, 0.0f), 0);
@@ -124,8 +136,24 @@ CRenderer * CManager::GetRenderer(void)
 	return m_pRenderer;
 }
 
+CObject * CManager::GetObject(void)
+{
+	return S_OK;
+}
+
 //キーボードの取得
 CInputKeyboard * CManager::GetKeyboard(void)
 {
 	return m_pKeyboard;
 }
+
+////staticの一括管理
+//CManager * CManager::GetInstance(void)
+//{
+//	if (pManager == NULL)
+//	{
+//		return pManager = new CManager;
+//	}
+//
+//	return pManager;
+//}

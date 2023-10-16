@@ -7,6 +7,8 @@
 class CLight
 {
 public:
+	CLight();
+	~CLight();
 	HRESULT Init(void); 
 	void Uninit(void); 
 	void Update(void);  
