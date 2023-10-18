@@ -33,7 +33,7 @@ HRESULT CRenderer::Init(HWND hWnd, BOOL bWindow)
 	static POINT move = { 2,3 };    //
 	const RECT rect = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT }; //
 
-														  //Direct3Dオブジェクトの生成
+	//Direct3Dオブジェクトの生成
 	m_PD3D = Direct3DCreate9(D3D_SDK_VERSION);
 	if (m_PD3D == NULL)
 	{
@@ -133,7 +133,7 @@ void CRenderer::Draw(void)
 	if (SUCCEEDED(m_pD3DDevice->BeginScene()))
 	{//描画開始が成功した場合
 
-	 //オブジェクトの描画処理
+		//オブジェクトの描画処理
 		CObject::DrawAll();
 
 		//描画終了

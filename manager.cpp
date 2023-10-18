@@ -13,12 +13,15 @@
 #include"input.h"
 #include"block.h"
 #include"camera.h"
+#include"3DObject.h"
+#include"light.h"
 
 //静的メンバ変数
 CRenderer * CManager::m_pRenderer = NULL;
 CInputKeyboard * CManager::m_pKeyboard = NULL;
 CManager * pManager = NULL;
-//CCamera * CManager::m_pCamera = NULL;
+CCamera * CManager::m_pCamera = NULL;
+CLight * CManager::m_pLight = NULL;
 
 //コンストラクタ
 CManager::CManager()
@@ -59,17 +62,28 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 		m_pKeyboard->Init(hInstance, hWnd);
 	}
 
-	//if (m_pCamera == NULL)
-	//{
-	//	//カメラの生成
-	//	m_pCamera = new CCamera;
+	if (m_pCamera == NULL)
+	{
+		//カメラの生成
+		m_pCamera = new CCamera;
 
-	//	//カメラの初期化処理
-	//	m_pCamera->Init();
-	//}
+		//カメラの初期化処理
+		m_pCamera->Init();
+	}
 
-	//オブジェクトの生成
-	CObject2D::Create(D3DXVECTOR3(1000.0f, 500.0f, 0.0f), 0);
+	if (m_pLight == NULL)
+	{
+		//ライトの生成
+		m_pLight = new CLight;
+
+		//ライトの初期化処理
+		m_pLight->Init();
+	}
+
+	////オブジェクトの生成
+	//CObject2D::Create(D3DXVECTOR3(1000.0f, 500.0f, 0.0f), 0);
+
+	/*C3DObject::Create(D3DXVECTOR3(0, 0, WALLSIZE), D3DXVECTOR3(0.0f, 0.0f, 0.0f), 3);*/
 
 	CPlayer::Create(D3DXVECTOR3(200.0f, 200.0f, 0.0f), 1);
 
@@ -145,6 +159,18 @@ CObject * CManager::GetObject(void)
 CInputKeyboard * CManager::GetKeyboard(void)
 {
 	return m_pKeyboard;
+}
+
+//カメラの取得
+CCamera * CManager::GetCamera(void)
+{
+	return m_pCamera;
+}
+
+//ライトの取得
+CLight * CManager::GetLight(void)
+{
+	return m_pLight;
 }
 
 ////staticの一括管理

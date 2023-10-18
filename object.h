@@ -5,7 +5,7 @@
 #include"d3dx9.h" //描画処理に必要
 
 #define MAX_OBJECT (128) //敵の総数
-#define NUM_OBJECT (4) //オブジェクトの種類
+#define NUM_OBJECT (4)   //オブジェクトの種類
 
 //オブジェクトクラス
 class CObject
@@ -18,7 +18,10 @@ public:
 	virtual void Uninit(void) = 0;  //ポリゴンの終了処理
 	virtual void Update(void) = 0;  //ポリゴンの更新処理
 	virtual void Draw(void) = 0;    //ポリゴンの描画処理
-	virtual void SetPosition(D3DXVECTOR3 pos, int nType) = 0; //位置と種類
+
+	void SetPosition(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int nType); //位置と種類	
+
+	/*virtual void SetPosition(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int nType) = 0;*/
 
 	static void ReleaseAll(void); //すべてのオブジェクトの破棄
 	static void UpdateAll(void);  //すべての更新処理

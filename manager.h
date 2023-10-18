@@ -10,6 +10,8 @@
 class CRenderer;
 class CInputKeyboard;
 class CObject;
+class CCamera;
+class CLight;
 
 //マネージャークラス
 class CManager
@@ -23,17 +25,20 @@ public:
 	void Update(void);
 	void Draw(void);
 
-	static CRenderer *GetRenderer(void); //レンダラーの取得
-	static CObject *GetObject(void);     //オブジェクトの取得
+	static CRenderer *GetRenderer(void);	  //レンダラーの取得
+	static CObject *GetObject(void);		  //オブジェクトの取得
 	static CInputKeyboard *GetKeyboard(void); //キーボードの取得
+	static CCamera *GetCamera(void);          //カメラの取得
+	static CLight *GetLight(void);            //ライトの取得
 	static CManager * GetInstance(void);
 	static HRESULT Release(void);
 private:
-	static CRenderer *m_pRenderer;       //レンダラー
-	static CObject *m_apObject;          //オブジェクト
-	static CInputKeyboard *m_pKeyboard;  //キーボード
-	static CManager * pManager;			 //マネージャー	
-	//static CCamera *m_pCamera;           //カメラ
+	static CRenderer *m_pRenderer;			  //レンダラー
+	static CObject *m_apObject;				  //オブジェクト
+	static CInputKeyboard *m_pKeyboard;		  //キーボード
+	static CManager * pManager;				  //マネージャー	
+	static CCamera * m_pCamera;				  //カメラ
+	static CLight * m_pLight;                 //ライト
 };
 
 #endif

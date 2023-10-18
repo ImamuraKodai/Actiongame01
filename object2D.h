@@ -43,8 +43,8 @@ private:
 
 	void MovePlayer(void);
 
-	static CObject2D *m_apObject[MAX_OBJECT];
-	static CObject2D *m_apObject1[MAX_OBJECT];
+	//static CObject2D *m_apObject[MAX_OBJECT];
+	//static CObject2D *m_apObject1[MAX_OBJECT];
 	static int m_NumObject;						    //オブジェクト総数
 	LPDIRECT3DVERTEXBUFFER9 m_pVtxBuff;			    //頂点バッファ
 

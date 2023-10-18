@@ -15,8 +15,7 @@
 #define NUM_OBJECT (4) //オブジェクトの種類
 
 //静的メンバ変数
-//CObject2D *CObject2D::m_apObject[MAX_OBJECT] = {}; //オブジェクトの情報
-int CObject2D::m_NumObject = 0;					     //オブジェクトの総数
+int CObject2D::m_NumObject = 0;					   //オブジェクトの総数
 
 //コンストラクタ
 CObject2D::CObject2D()
@@ -33,6 +32,7 @@ CObject2D::~CObject2D()
 //生成処理
 CObject2D * CObject2D::Create(D3DXVECTOR3 pos, int nType)
 {
+	//Object2Dのポインタ
 	CObject2D * pObject2D;
 
 	//オブジェクト2Dの生成
@@ -41,6 +41,7 @@ CObject2D * CObject2D::Create(D3DXVECTOR3 pos, int nType)
 	//初期化処理
 	pObject2D->Init();
 
+	//2Dオブジェクトの位置
 	pObject2D->SetPosition(pos, nType);
 
 	return pObject2D;
@@ -65,9 +66,9 @@ HRESULT CObject2D::Init(void)
 		&m_pVtxBuff,
 		NULL);
 
-	VERTEX_2D *pVtx; //
+	VERTEX_2D *pVtx; //頂点バッファの設定
 
-					 //頂点バッファをロックする
+	//頂点バッファをロックする
 	m_pVtxBuff->Lock(0, 0, (void**)&pVtx, 0);
 
 	//頂点座標の設定
@@ -131,7 +132,7 @@ void CObject2D::Uninit(void)
 //更新処理
 void CObject2D::Update(void)
 {
-	VERTEX_2D *pVtx; //
+	VERTEX_2D *pVtx; //頂点バッファの設定
 
 	//頂点バッファをロック
 	m_pVtxBuff->Lock(0, 0, (void**)&pVtx, 0);
@@ -192,7 +193,7 @@ void CObject2D::SetPosition(D3DXVECTOR3 pos, int nType)
 {
 	int nCntObject = 0;
 
-	VERTEX_2D * pVtx; //
+	VERTEX_2D * pVtx; //頂点バッファの設定
 
 	m_pos = pos;
 
@@ -219,7 +220,7 @@ void CObject2D::SetPosition(D3DXVECTOR3 pos, int nType)
 		fWidth = 200.0f;
 	}
 
-	m_pVtxBuff->Lock(0, 0, (void**)&pVtx, 0);
+	m_pVtxBuff->Lock(0, 0, (void**)&pVtx, 0); //頂点バッファをロックする
 
 	pVtx += (nCntObject * 4); //該当の位置まで進める
 

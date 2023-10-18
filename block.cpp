@@ -12,7 +12,6 @@
 //********************************************
 //静的メンバ変数
 //********************************************
-CObject2D *CObject2D::m_apObject[MAX_OBJECT] = {};	 //テクスチャのポインタ
 LPDIRECT3DVERTEXBUFFER9 CBlock::m_pVtxBuff1 = NULL;  //頂点バッファのポインタ 
 
 //==============================================
@@ -48,7 +47,7 @@ CBlock * CBlock::Create(D3DXVECTOR3 pos, int nType)
 		if (pBlock != NULL)
 		{//メモリの確保が出来ていたら
 
-		 //初期化処理
+			//初期化処理
 			pBlock->Init();
 
 			//テクスチャの割り当て

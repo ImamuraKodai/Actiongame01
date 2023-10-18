@@ -9,6 +9,8 @@
 #include"main.h"
 #include"object.h"
 #include"manager.h"
+#include"camera.h"
+#include"light.h"
 
 //静的メンバ変数
 int CObject::m_nNumAll = 0;
@@ -21,11 +23,11 @@ CObject::CObject()
 	{
 		if (m_apObject[nCntObject] == NULL)
 		{
-			m_apObject[nCntObject] = this;  //自分自身を代入
+			m_apObject[nCntObject] = this;		   //自分自身を代入
 
-			m_nID = MAX_OBJECT;			    //自分自身のIDを保存
+			m_nID = MAX_OBJECT;					   //自分自身のIDを保存
 
-			m_nNumAll++;				    //総数をカウントアップ
+			m_nNumAll++;						   //総数をカウントアップ
 
 			m_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f); //プレイヤーの位置
 
@@ -79,6 +81,11 @@ void CObject::DrawAll(void)
 			m_apObject[nCntObject]->Draw();
 		}
 	}
+
+	CCamera * pCamera = CManager::GetCamera();
+
+	//カメラの設定
+	pCamera->SetCamera();
 }
 
 //オブジェクトの破棄

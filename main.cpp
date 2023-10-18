@@ -8,6 +8,7 @@
 #include"renderer.h"
 #include"object.h"
 #include"object2D.h"
+#include"3DObject.h"
 #include"manager.h"
 
 //マクロ定義
@@ -44,7 +45,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hInctancePlev, LPSTR IpCmdLine
 	HWND hWnd; //ウインドウハンドル(識別子)
 	MSG msg;   //メッセージを格納する変数	
 
-			   //ウインドウクラスの登録
+	//ウインドウクラスの登録
 	RegisterClassEx(&wcex);
 
 	//ウインドウを生成
@@ -61,7 +62,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hInctancePlev, LPSTR IpCmdLine
 		hInstance,                  //インスタンスハンドル
 		NULL);                      //ウインドウ作成データ
 
-									//マネージャーの生成
+	//マネージャーの生成
 	pManager = new CManager;
 
 	//マネージャーの初期化処理
@@ -71,7 +72,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hInctancePlev, LPSTR IpCmdLine
 	ShowWindow(hWnd, nCmdShow);     //ウインドウの表示状態を設定
 	UpdateWindow(hWnd);             //クライアント領域を更新
 
-									//メッセージループ
+	//メッセージループ
 	while (1)
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) != 0)
@@ -92,7 +93,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hInctancePlev, LPSTR IpCmdLine
 		else
 		{//DirectXの処理
 
-		 //マネージャーの更新処理
+			//マネージャーの更新処理
 			pManager->Update();
 
 			//マネージャーの描画処理
@@ -133,7 +134,8 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM IParam)
 	switch (uMsg)
 	{
 	case WM_DESTROY: //ウインドウ破棄のメッセージ
-					 //WM_QUITメッセージを送る	
+
+		//WM_QUITメッセージを送る	
 		PostQuitMessage(0);
 		break;
 

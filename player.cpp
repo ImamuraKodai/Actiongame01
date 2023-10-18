@@ -7,7 +7,6 @@
 //******************************************
 //静的メンバ変数宣言
 //******************************************
-CObject2D *CObject2D::m_apObject1[MAX_OBJECT] = {};	//テクスチャのポインタ
 LPDIRECT3DVERTEXBUFFER9 CPlayer::m_pVtxBuff = NULL; //頂点バッファのポインタ 
 
 //===========================================================================t
@@ -245,7 +244,7 @@ void CPlayer::MovePlayer(void)
 
 	VERTEX_2D * pVtx; //プレイヤーの頂点
 
-					  //頂点バッファのロック
+	//頂点バッファのロック
 	m_pVtxBuff->Lock(0, 0, (void**)&pVtx, 0);
 
 	m_CounterAnim++; //カウンターを加算
